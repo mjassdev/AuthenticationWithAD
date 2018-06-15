@@ -121,8 +121,6 @@
     <Content Include="Content\img\error-page\403.png" />
     <Content Include="Content\img\error-page\404.png" />
     <Content Include="Content\img\error-page\500.png" />
-    <Content Include="Content\img\logo\logo-sesc-sm.jpg" />
-    <Content Include="Content\img\logo\logo-sesc.png" />
     <Content Include="Content\img\user-icon.png" />
     <Content Include="Content\pace-theme-minimal.css" />
     <Content Include="Content\themify-icons.css" />
@@ -130,16 +128,6 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\themify9f24.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\TelegramaEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>TelegramaEntities.Context.cs</LastGenOutput>
-      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\TelegramaEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
-      <LastGenOutput>TelegramaEntities.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\3th\app.min.js" />
     <Content Include="Scripts\3th\bloodhound.min.js" />
     <Content Include="Scripts\3th\datatables\dataTables.bootstrap4.min.js" />
@@ -172,13 +160,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\customScript.js" />
-    <EntityDeploy Include="Models\TelegramaEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TelegramaEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\TelegramaEntities.edmx.diagram">
-      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -192,59 +173,14 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Telegrama\Create.cshtml" />
-    <Content Include="Views\Telegrama\Delete.cshtml" />
-    <Content Include="Views\Telegrama\Details.cshtml" />
-    <Content Include="Views\Telegrama\Edit.cshtml" />
-    <Content Include="Views\Telegrama\Index.cshtml" />
-    <Content Include="Views\Rdm\Create.cshtml" />
-    <Content Include="Views\Rdm\Delete.cshtml" />
-    <Content Include="Views\Rdm\Details.cshtml" />
-    <Content Include="Views\Rdm\Edit.cshtml" />
-    <Content Include="Views\Rdm\Index.cshtml" />
-    <Content Include="Views\Outros\Create.cshtml" />
-    <Content Include="Views\Outros\Delete.cshtml" />
-    <Content Include="Views\Outros\Details.cshtml" />
-    <Content Include="Views\Outros\Edit.cshtml" />
-    <Content Include="Views\Outros\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OutrosController.cs" />
-    <Compile Include="Controllers\RcmsController.cs" />
-    <Compile Include="Controllers\RdmController.cs" />
-    <Compile Include="Controllers\TelegramaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Outros.cs">
-      <DependentUpon>TelegramaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Rcms.cs">
-      <DependentUpon>TelegramaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Rdm.cs">
-      <DependentUpon>TelegramaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Telegrama.cs">
-      <DependentUpon>TelegramaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TelegramaEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TelegramaEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TelegramaEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TelegramaEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TelegramaEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TelegramaEntities.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -267,13 +203,10 @@
     <Content Include="fonts\themifyd41d.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Rcms\Create.cshtml" />
-    <Content Include="Views\Rcms\Delete.cshtml" />
-    <Content Include="Views\Rcms\Details.cshtml" />
-    <Content Include="Views\Rcms\Edit.cshtml" />
-    <Content Include="Views\Rcms\Index.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Layout\_Layout.cshtml" />
+    <Content Include="Views\Layout\_Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -283,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\logo\" />
     <Folder Include="Scripts\app\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,8 +1,10 @@
 ﻿using System;
+using GerenciaTelegrama.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace GerenciaTelegrama.Controllers
 {
@@ -12,6 +14,64 @@ namespace GerenciaTelegrama.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(Usuario usuario)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (Login(usuario.Username, usuario.Senha))
+                {
+                        FormsAuthentication.SetAuthCookie(usuario.Username, false);
+                        return RedirectToAction("Dashboard", "Home");
+                }
+                ViewBag.ErroLogin = "Incorrect username or password";
+                return View(usuario);
+
+            }
+            ViewBag.ErroLogin = "Fill in all the fields";
+            return View(usuario);
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public ActionResult NotFound()
+        {
+            return View();
+        }
+
+        public ActionResult InternalServerError()
+        {
+            return View();
+        }
+
+        [System.Runtime.InteropServices.DllImport("advapi32.dll")]
+        public static extern bool LogonUser(string userName, string domainName, string password, int logonType, int logonProvider, ref IntPtr phToken);
+        public virtual bool Login(string username, string senha)
+        {
+            var isValid = IsValidateCredentials(username, senha, "YOUR_DOMAIN_HERE"); // Change the "YOUR_DOMAIN_HERE" for your Active Directory domain
+            return isValid;
+        }
+
+        public static bool IsValidateCredentials(string userName, string password, string domain)
+        {
+            var tokenHandler = IntPtr.Zero;
+            var isValid = LogonUser(userName, domain, password, 2, 0, ref tokenHandler);
+            return isValid;
         }
     }
 }

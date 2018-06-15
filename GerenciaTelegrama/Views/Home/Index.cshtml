@@ -1,12 +1,55 @@
-﻿
+﻿@model GerenciaTelegrama.Models.Usuario
 @{
-    ViewBag.Title = "Index";
+        Layout = "~/Views/Layout/_Login.cshtml";
+        ViewBag.Title = "Login";
 }
 
-<h2>SISTEMA DE GERENCIAMENTO DE TELEGRAMAS</h2>
-<br />
+
+<div class="text-center" style="margin-top: 10%">
+    <h2>LOGIN WITH AD</h2>
+</div>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            <div class="card" style="margin-top: 15%">
+                <div class="card-body">
+                    <div class="mrg-btm-15 row">
+
+                        <div class="col text-right mrg-top-15">
+                            <h3>LOGIN</h3>
+                        </div>
+                    </div>
+
+                    @using (Html.BeginForm())
+        {
+            if (ViewBag.ErroLogin != null)
+            {
+                <span class="text-danger">@ViewBag.ErroLogin</span>
+        }
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @autofocus = "true", @placeholder = "Username" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password" } })
+                @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mrg-top-20 text-right">
+                <button type="submit" class="btn btn-info">ACCESS</button>
+            </div>
+}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
 
-<center>
-    <iframe width="1024" height="630" src="https://app.powerbi.com/view?r=eyJrIjoiZjgzZTBiYmEtYWVkOS00MDdjLTkxMTctYTI4NjE3M2YzYzEzIiwidCI6ImU4MDQ3OWI0LTI2ZWQtNGQ2OS1hZWZhLTgwMTk0MDliMDQ1MiJ9" frameborder="0" allowFullScreen="true"></iframe>
-</center>
